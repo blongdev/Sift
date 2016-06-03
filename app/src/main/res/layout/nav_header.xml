@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/navHeaderBg"
+        android:scaleType="fitXY"
+        android:src="@drawable/nav_header_bg"
+        />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/nav_header_add_account"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:id="@+id/nav_username"
+            android:focusable="true"
+            android:padding="16dp"
+            android:layout_gravity="bottom"/>
+
+        <ImageView
+            android:id="@+id/remove_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:padding="16dp"
+            android:visibility="gone"
+            android:focusable="true"
+            android:contentDescription="@string/log_out"
+            android:src="@drawable/ic_remove_circle_outline_24dp"/>
+
+</FrameLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorPrimary">#37474F</color>
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorAccent">#40C4FF</color>
+    <color name="background">#546E7A</color>
+    <color name="lightBackground">#78909C</color>
+
+    <color name="imageBg">#90A4AE</color>
+
+    <color name="navHeaderBg">#78909C</color>
+
+    <color name="indigoOne">#303F9F</color>
+    <color name="indigoTwo">#3F51B5</color>
+    <color name="indigoThree">#5C6BC0</color>
+    <color name="indigoFour">#7986CB</color>
+    <color name="indigoFive">#9FA8DA</color>
+    <color name="indigoSix">#3949AB</color>
+
+    <color name="secondary_text">#d3d3d3</color>
+
+
+    <!--<color name="comment_bg_color">#eeeeee</color>-->
+    <!--<color name="comment_line_color">#9e9e9e</color>-->
+    <color name="comment_bg_color">@color/background</color>
+    <color name="comment_line_color">@color/lightBackground</color>
+
+    <color name="nav_drawer_text">@android:color/black</color>
+
+    <color name="upvote">#ff8c61</color>
+    <color name="downvote">#9494ff</color>
+    <!--<color name="comment_bg_color">@android:color/white</color>-->
+    <!--<color name="comment_line_color">@android:color/white</color>-->
+
+    <!--<color name="comment_line_color">@color/colorAccent</color>-->
+    <!--<color name="comment_bg_color">#eeeeee</color>-->
+
+
+
+</resources>

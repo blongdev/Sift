@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.blongdev.sift.UserInfoActivity">
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/add_friend"
+        android:icon="@drawable/ic_favorite_outline_24dp"
+        android:title="@string/add_friend"
+        app:showAsAction="always"/>
+
+</menu>

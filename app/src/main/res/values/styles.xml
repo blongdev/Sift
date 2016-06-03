@@ -1,0 +1,126 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="PostText" parent="@android:style/TextAppearance.Medium">
+        <item name="android:gravity">left</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="PostTitle" parent="PostText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="PostUpper" parent="PostText">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="PostUsername" parent="PostUpper">
+
+    </style>
+
+    <style name="PostSubreddit" parent="PostUpper">
+
+    </style>
+
+    <style name="PostLower" parent="PostText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+    <style name="PostPoints" parent="PostUpper">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="PostComments" parent="PostLower">
+
+    </style>
+
+    <style name="PostUrl" parent="PostLower">
+
+    </style>
+
+    <style name="PostAge" parent="PostLower">
+
+    </style>
+
+    <style name="PostButton" parent="@android:style/Widget.ImageButton">
+
+    </style>
+
+    <style name="CommentTitle" parent="PostText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CommentStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="CommentInfo" parent="PostText">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="PostDetailTitle" parent="PostTitle">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="PostDetailUpper" parent="PostText">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="PostDetailUsername" parent="PostDetailUpper">
+
+    </style>
+
+    <style name="PostDetailSubreddit" parent="PostDetailUpper">
+
+    </style>
+
+    <style name="PostDetailLower" parent="PostText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+    <style name="PostDetailPoints" parent="PostDetailLower">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="PostDetailComments" parent="PostDetailLower">
+
+    </style>
+
+    <style name="PostDetailUrl" parent="PostDetailLower">
+
+    </style>
+
+    <style name="PostDetailAge" parent="PostDetailLower">
+
+    </style>
+
+    <style name="NavDrawer">
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
+</resources>

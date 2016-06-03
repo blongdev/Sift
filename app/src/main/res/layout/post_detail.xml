@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/post_detail_layout"
+    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/content_spacer"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/post_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/post_username"
+                    style="@style/PostUsername"
+                    android:textColor="@color/secondary_text"
+                    android:focusable="true"
+                    />
+
+                <TextView
+                    android:id="@+id/post_subreddit"
+                    style="@style/PostSubreddit"
+                    android:layout_toRightOf="@id/post_username"
+                    android:layout_toEndOf="@id/post_username"
+                    android:focusable="true"
+                    android:textColor="@color/secondary_text"
+                    />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/post_title"
+                style="@style/PostTitle"
+                android:layout_gravity="start"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/post_points"
+                    style="@style/PostPoints"
+                    android:textColor="@color/secondary_text"
+                    />
+
+                <TextView
+                    android:id="@+id/post_comments"
+                    style="@style/PostComments"
+                    android:textColor="@color/secondary_text"
+                    android:layout_toRightOf="@id/post_points"
+                    android:layout_toEndOf="@id/post_points"
+                    />
+
+                <TextView
+                    android:id="@+id/post_url"
+                    style="@style/PostUrl"
+                    android:textColor="@color/secondary_text"
+                    android:layout_toRightOf="@id/post_comments"
+                    android:layout_toEndOf="@id/post_comments"
+                    />
+
+                <TextView
+                    android:id="@+id/post_age"
+                    style="@style/PostAge"
+                    android:textColor="@color/secondary_text"
+                    android:layout_toRightOf="@id/post_url"
+                    android:layout_toEndOf="@id/post_url"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

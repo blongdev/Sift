@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_24dp"
+            android:checked="false"
+            android:focusable="true"
+            android:title="@string/nav_home" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:checked="false"
+            android:icon="@drawable/ic_person_24dp"
+            android:focusable="true"
+            android:title="@string/nav_profile" />
+
+        <item
+            android:id="@+id/nav_inbox"
+            android:checked="false"
+            android:icon="@drawable/ic_email_24dp"
+            android:focusable="true"
+            android:title="@string/nav_inbox" />
+
+        <item
+            android:id="@+id/nav_friends"
+            android:checked="false"
+            android:icon="@drawable/ic_people_24dp"
+            android:focusable="true"
+            android:title="@string/nav_friends" />
+
+        <item
+            android:id="@+id/nav_subreddits"
+            android:checked="false"
+            android:icon="@drawable/ic_folder_24dp"
+            android:focusable="true"
+            android:title="@string/nav_subreddits"/>
+
+        <item
+            android:id="@+id/nav_popular"
+            android:icon="@drawable/ic_star_black_24dp"
+            android:checked="false"
+            android:focusable="true"
+            android:title="@string/nav_popular" />
+
+        <item
+            android:id="@+id/nav_go_to_user"
+            android:checked="false"
+            android:icon="@drawable/ic_arrow_forward_24dp"
+            android:focusable="true"
+            android:title="@string/nav_go_to_user"/>
+
+        <item
+            android:id="@+id/nav_go_to_subreddit"
+            android:checked="false"
+            android:icon="@drawable/ic_arrow_forward_24dp"
+            android:focusable="true"
+            android:title="@string/nav_go_to_subreddit"/>
+
+
+    </group>
+</menu>

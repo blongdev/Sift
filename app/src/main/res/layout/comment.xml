@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/comment_view">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/comment_block"
+        android:background="@drawable/comment_border"
+        android:padding="@dimen/content_spacer">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:paddingBottom="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommentInfo"
+                    android:id="@+id/comment_username"
+                    android:textColor="@color/secondary_text"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommentInfo"
+                    android:textColor="@color/secondary_text"
+                    android:layout_toRightOf="@id/comment_username"
+                    android:layout_toEndOf="@id/comment_username"
+                    android:id="@+id/comment_points"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommentInfo"
+                    android:textColor="@color/secondary_text"
+                    android:layout_toRightOf="@id/comment_points"
+                    android:layout_toEndOf="@id/comment_points"
+                    android:id="@+id/comment_age"
+                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommentInfo"
+                    android:textColor="@color/secondary_text"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/comment_replies"
+                     />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CommentTitle"
+                android:id="@+id/comment_body"
+                android:layout_gravity="start|top"
+                android:padding="4dp"
+                android:paddingTop="0dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/comment_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/reply_text"
+                    android:padding="@dimen/content_spacer"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:backgroundTint="@android:color/white"
+                    />
+
+                <ImageView
+                    android:id="@+id/send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:padding="8dp"
+                    android:focusable="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_send_24dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comment_actions"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/upvote"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/upvote"
+                    android:focusable="true"
+                    android:src="@drawable/ic_up_arrow_white_24dp" />
+
+                <ImageView
+                    android:id="@+id/downvote"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/downvote"
+                    android:focusable="true"
+                    android:src="@drawable/ic_down_arrow_white_24dp" />
+
+                <ImageView
+                    android:id="@+id/reply_to_comment"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/reply"
+                    android:focusable="true"
+                    android:src="@drawable/ic_reply_24dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
