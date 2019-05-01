@@ -8,6 +8,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
 import com.blongdev.sift.database.SiftContract;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
@@ -38,6 +39,9 @@ public class SiftApplication extends Application {
     public void onCreate ()
     {
         super.onCreate();
+
+        MobileAds.initialize(this, "ca-app-pub-0619092467992816~7084870882");
+
         //create sync account if it doesnt already exist
         createSyncAccount();
     }
