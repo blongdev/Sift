@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import net.dean.jraw.ApiException;
 import net.dean.jraw.http.NetworkException;
+import net.dean.jraw.managers.CaptchaHelper;
 import net.dean.jraw.models.Captcha;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -193,9 +194,10 @@ class CaptchaLoader extends AsyncTaskLoader<Captcha> {
 
         try {
             reddit.mRateLimiter.acquire();
-            if (reddit.mRedditClient.needsCaptcha()) {
+            CaptchaHelper captchaHelper = new CaptchaHelper(reddit.mRedditClient);
+            if (captchaHelper.isNecessary()) {
                 reddit.mRateLimiter.acquire();
-                return reddit.mRedditClient.getNewCaptcha();
+                return captchaHelper.getNew();
             }
         } catch (RuntimeException | ApiException e) {
             e.printStackTrace();

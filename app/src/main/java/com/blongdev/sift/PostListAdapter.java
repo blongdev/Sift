@@ -421,7 +421,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
                     intent.putExtra(SiftApplication.getContext().getString(R.string.points), sub.getScore());
                     intent.putExtra(SiftApplication.getContext().getString(R.string.comments), sub.getCommentCount());
                     intent.putExtra(SiftApplication.getContext().getString(R.string.url), sub.getUrl());
-                    intent.putExtra(SiftApplication.getContext().getString(R.string.age), Utilities.getAgeString(sub.getCreatedUtc().getTime()));
+                    intent.putExtra(SiftApplication.getContext().getString(R.string.age), Utilities.getAgeString(sub.getCreated().getTime()));
                     intent.putExtra(SiftApplication.getContext().getString(R.string.post_id), mPostId);
                     intent.putExtra(SiftApplication.getContext().getString(R.string.server_id), mPostServerId);
                     intent.putExtra(SiftApplication.getContext().getString(R.string.body), sub.getSelftext());

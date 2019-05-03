@@ -193,7 +193,7 @@ class UserSidebarLoader extends AsyncTaskLoader<UserInfo> {
             UserInfo userInfo = new UserInfo();
             userInfo.mLinkKarma = user.getLinkKarma();
             userInfo.mCommentKarma = user.getCommentKarma();
-            userInfo.mAge = user.getCreatedUtc().getTime();
+            userInfo.mAge = user.getCreated().getTime();
             return userInfo;
         } catch (RuntimeException e) {
             e.printStackTrace();

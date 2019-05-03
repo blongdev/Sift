@@ -343,7 +343,7 @@ class ContributionLoader extends AsyncTaskLoader<List<ContributionInfo>> {
                         commentInfo.mUsername = comment.getAuthor();
                         commentInfo.mPoints = comment.getScore();
                         commentInfo.mBody = comment.getBody();
-                        commentInfo.mAge = comment.getCreatedUtc().getTime();
+                        commentInfo.mAge = comment.getCreated().getTime();
                         commentInfo.mContributionType = ContributionInfo.CONTRIBUTION_COMMENT;
                         commentInfo.mVote = comment.getVote().getValue();
                         commentInfo.mJrawComment = comment;
@@ -364,7 +364,7 @@ class ContributionLoader extends AsyncTaskLoader<List<ContributionInfo>> {
                         post.mComments = submission.getCommentCount();
                         post.mBody = submission.getSelftext();
                         post.mDomain = submission.getDomain();
-                        post.mAge = submission.getCreatedUtc().getTime();
+                        post.mAge = submission.getCreated().getTime();
                         post.mPosition = ((paginator.getPageIndex() - 1) * SubredditFragment.PAGE_SIZE) + i;
                         post.mContributionType = ContributionInfo.CONTRIBUTION_POST;
                         post.mVote = submission.getVote().getValue();

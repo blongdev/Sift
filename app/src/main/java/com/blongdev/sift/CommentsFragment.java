@@ -451,7 +451,7 @@ public class CommentsFragment extends Fragment implements LoaderManager.LoaderCa
                 commentInfo.mPoints = comment.getScore();
                 commentInfo.mJrawComment = comment;
                 commentInfo.mComments = commentNode.getImmediateSize();
-                commentInfo.mAge = comment.getCreatedUtc().getTime();
+                commentInfo.mAge = comment.getCreated().getTime();
                 TreeNode child = createCommentNode(commentInfo);
                 parent.addChild(child);
                 copyTree(child, commentNode);

@@ -179,7 +179,7 @@ public class Reddit {
         LoggedInAccount me = mRedditClient.me();
         String username = me.getFullName();
         String serverId = me.getId();
-        long date = me.getCreatedUtc().getTime();
+        long date = me.getCreated().getTime();
         long commentKarma = me.getCommentKarma();
         long linkKarma = me.getLinkKarma();
 
@@ -414,7 +414,7 @@ public class Reddit {
                     cv.put(SiftContract.Posts.COLUMN_NUM_COMMENTS, sub.getCommentCount());
                     cv.put(SiftContract.Posts.COLUMN_BODY, sub.getSelftext());
                     cv.put(SiftContract.Posts.COLUMN_DOMAIN, sub.getDomain());
-                    cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreatedUtc().getTime());
+                    cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreated().getTime());
                     cv.put(SiftContract.Posts.COLUMN_VOTE, mVote);
                     cv.put(SiftContract.Posts.COLUMN_FAVORITED, 1);
                     SiftApplication.getContext().getContentResolver().insert(SiftContract.Posts.CONTENT_URI, cv);
@@ -670,7 +670,7 @@ public class Reddit {
                 cv.put(SiftContract.Posts.COLUMN_NUM_COMMENTS, sub.getCommentCount());
                 cv.put(SiftContract.Posts.COLUMN_BODY, sub.getSelftext());
                 cv.put(SiftContract.Posts.COLUMN_DOMAIN, sub.getDomain());
-                cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreatedUtc().getTime());
+                cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreated().getTime());
                 cv.put(SiftContract.Posts.COLUMN_VOTE, sub.getVote().getValue());
                 cv.put(SiftContract.Posts.COLUMN_FAVORITED, 1);
                 Uri uri = SiftApplication.getContext().getContentResolver().insert(SiftContract.Posts.CONTENT_URI, cv);
@@ -885,7 +885,7 @@ public class Reddit {
                 ContentValues cv = new ContentValues();
                 cv.put(SiftContract.Users.COLUMN_SERVER_ID, user.getId());
                 cv.put(SiftContract.Users.COLUMN_USERNAME, mUsername);
-                cv.put(SiftContract.Users.COLUMN_DATE_CREATED, user.getCreatedUtc().getTime());
+                cv.put(SiftContract.Users.COLUMN_DATE_CREATED, user.getCreated().getTime());
                 cv.put(SiftContract.Users.COLUMN_COMMENT_KARMA, user.getCommentKarma());
                 cv.put(SiftContract.Users.COLUMN_LINK_KARMA, user.getLinkKarma());
                 Uri userUri = SiftApplication.getContext().getContentResolver().insert(SiftContract.Users.CONTENT_URI, cv);

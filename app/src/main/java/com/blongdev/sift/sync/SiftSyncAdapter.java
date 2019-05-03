@@ -137,7 +137,7 @@ public class SiftSyncAdapter extends AbstractThreadedSyncAdapter {
                     cv.put(SiftContract.Posts.COLUMN_NUM_COMMENTS, sub.getCommentCount());
                     cv.put(SiftContract.Posts.COLUMN_BODY, sub.getSelftext());
                     cv.put(SiftContract.Posts.COLUMN_DOMAIN, sub.getDomain());
-                    cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreatedUtc().getTime());
+                    cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreated().getTime());
                     cv.put(SiftContract.Posts.COLUMN_VOTE, sub.getVote().getValue());
                     cv.put(SiftContract.Posts.COLUMN_FAVORITED, sub.isSaved());
                     cv.put(SiftContract.Posts.COLUMN_POSITION, i);
@@ -252,7 +252,7 @@ public class SiftSyncAdapter extends AbstractThreadedSyncAdapter {
 
                     cv.put(SiftContract.Users.COLUMN_SERVER_ID, user.getId());
                     cv.put(SiftContract.Users.COLUMN_USERNAME, fullname);
-                    cv.put(SiftContract.Users.COLUMN_DATE_CREATED, user.getCreatedUtc().getTime());
+                    cv.put(SiftContract.Users.COLUMN_DATE_CREATED, user.getCreated().getTime());
                     cv.put(SiftContract.Users.COLUMN_COMMENT_KARMA, user.getCommentKarma());
                     cv.put(SiftContract.Users.COLUMN_LINK_KARMA, user.getLinkKarma());
                     Uri userUri = mContentResolver.insert(SiftContract.Users.CONTENT_URI, cv);
@@ -385,7 +385,7 @@ public class SiftSyncAdapter extends AbstractThreadedSyncAdapter {
                         cv.put(SiftContract.Posts.COLUMN_NUM_COMMENTS, sub.getCommentCount());
                         cv.put(SiftContract.Posts.COLUMN_BODY, sub.getSelftext());
                         cv.put(SiftContract.Posts.COLUMN_DOMAIN, sub.getDomain());
-                        cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreatedUtc().getTime());
+                        cv.put(SiftContract.Posts.COLUMN_DATE_CREATED, sub.getCreated().getTime());
                         cv.put(SiftContract.Posts.COLUMN_VOTE, sub.getVote().getValue());
                         cv.put(SiftContract.Posts.COLUMN_FAVORITED, 1);
                         Uri uri = mContentResolver.insert(SiftContract.Posts.CONTENT_URI, cv);
