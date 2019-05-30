@@ -10,7 +10,7 @@ android {
         applicationId "com.blongdev.sift"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
+        versionCode 3
         versionName "0.7.2"
     }
 
