@@ -11,8 +11,12 @@ import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import net.dean.jraw.http.oauth.Credentials;
-import net.dean.jraw.http.oauth.OAuthHelper;
+
+import net.dean.jraw.http.NetworkAdapter;
+import net.dean.jraw.http.OkHttpNetworkAdapter;
+import net.dean.jraw.oauth.Credentials;
+import net.dean.jraw.oauth.OAuthHelper;
+import net.dean.jraw.oauth.StatefulAuthHelper;
 
 
 public class AuthenticationActivity extends BaseActivity {
@@ -37,38 +41,39 @@ public class AuthenticationActivity extends BaseActivity {
         mReddit = Reddit.getInstance();
 
         final Credentials credentials = Credentials.installedApp(getString(R.string.client_id), getString(R.string.redirect_url));
-            final OAuthHelper oAuth = mReddit.mRedditClient.getOAuthHelper();
-            String[] scopes = new String[]{"identity", "edit", "flair", "history", "modconfig", "modflair",
-                    "modlog", "modposts", "modwiki", "mysubreddits", "privatemessages", "read", "report",
-                    "save", "submit", "subscribe", "vote", "wikiedit", "wikiread"};
-            String url = oAuth.getAuthorizationUrl(credentials, true, scopes).toExternalForm();
+        NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(mReddit.mUserAgent);
+        final StatefulAuthHelper oAuth = OAuthHelper.interactive(networkAdapter, credentials);
+        String[] scopes = new String[]{"identity", "edit", "flair", "history", "modconfig", "modflair",
+                "modlog", "modposts", "modwiki", "mysubreddits", "privatemessages", "read", "report",
+                "save", "submit", "subscribe", "vote", "wikiedit", "wikiread"};
+        String url = oAuth.getAuthorizationUrl(true, true, scopes);
 
-            CookieManager cookieManager = CookieManager.getInstance();
-            cookieManager.removeAllCookie();
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookie();
 
-            mWebView.loadUrl(url);
+        mWebView.loadUrl(url);
 
-            mWebView.setWebChromeClient(new WebChromeClient() {
-                @Override
-                public void onProgressChanged(WebView view, int newProgress) {
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
 
-                }
-    });
+            }
+        });
 
-            mWebView.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                    if (url.contains("code=")) {
-                        mReddit.runUserChallengeTask(url);
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(mActivity).toBundle());
-                        } else {
-                            startActivity(intent);
-                        }
+        mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                if (url.contains("code=")) {
+                    mReddit.runUserChallengeTask(url);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(mActivity).toBundle());
+                    } else {
+                        startActivity(intent);
                     }
                 }
-            });
+            }
+        });
     }
 
 }

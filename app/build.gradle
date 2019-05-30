@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //reddit wrapper
-    implementation 'net.dean.jraw:JRAW:0.9.0'
+    implementation 'net.dean.jraw:JRAW:1.0.0'
 
     //comment tree
     implementation 'com.github.bmelnychuk:atv:1.2.+'

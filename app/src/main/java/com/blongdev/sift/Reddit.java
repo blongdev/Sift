@@ -7,7 +7,6 @@ import android.app.ActivityOptions;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,7 +16,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,25 +25,27 @@ import com.google.common.util.concurrent.RateLimiter;
 
 import net.dean.jraw.ApiException;
 import net.dean.jraw.RedditClient;
-import net.dean.jraw.http.LoggingMode;
-import net.dean.jraw.http.NetworkException;
+import net.dean.jraw.http.NetworkAdapter;
+import net.dean.jraw.http.OkHttpNetworkAdapter;
 import net.dean.jraw.http.UserAgent;
-import net.dean.jraw.http.oauth.Credentials;
-import net.dean.jraw.http.oauth.OAuthData;
-import net.dean.jraw.http.oauth.OAuthException;
-import net.dean.jraw.http.oauth.OAuthHelper;
-import net.dean.jraw.models.Captcha;
 import net.dean.jraw.models.Comment;
-import net.dean.jraw.models.LoggedInAccount;
+import net.dean.jraw.models.OAuthData;
+import net.dean.jraw.models.Sorting;
 import net.dean.jraw.models.Submission;
 import net.dean.jraw.models.Subreddit;
+import net.dean.jraw.models.TimePeriod;
 import net.dean.jraw.models.VoteDirection;
-import net.dean.jraw.paginators.Paginator;
-import net.dean.jraw.paginators.Sorting;
-import net.dean.jraw.paginators.TimePeriod;
+import net.dean.jraw.oauth.Credentials;
+import net.dean.jraw.oauth.OAuthException;
+import net.dean.jraw.oauth.OAuthHelper;
+import net.dean.jraw.oauth.StatefulAuthHelper;
+import net.dean.jraw.pagination.Paginator;
 
+
+import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -74,7 +74,7 @@ public class Reddit {
     public UserAgent mUserAgent;
     public String mRefreshToken;
     public Credentials mCredentials;
-    public OAuthHelper mOAuthHelper;
+    public StatefulAuthHelper mOAuthHelper;
     public RateLimiter mRateLimiter;
     public Sorting mSort;
     public TimePeriod mTime;
@@ -89,21 +89,21 @@ public class Reddit {
 
     private Reddit() {
         mUserAgent = getUserAgent();
-        mRedditClient = new RedditClient(mUserAgent);
+        NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(mUserAgent);
         mCredentials = getCredentials();
-        mOAuthHelper = mRedditClient.getOAuthHelper();
+        mOAuthHelper = OAuthHelper.interactive(networkAdapter, mCredentials);
+
+        mRedditClient = new RedditClient(networkAdapter, mUserAgent, mCredentials);
         mRateLimiter = RateLimiter.create(1);
         mSort = Paginator.DEFAULT_SORTING;
         mTime = Paginator.DEFAULT_TIME_PERIOD;
 
-        mRedditClient.setLoggingMode(LoggingMode.ALWAYS);
-        mRedditClient.setSaveResponseHistory(true);
-
+        mRedditClient.setLogHttp(true);
         mRefreshTime = System.currentTimeMillis() + (60 * 60 * 1000);
     }
 
     public static UserAgent getUserAgent () {
-        return UserAgent.of("Android", "com.blongdev.sift", BuildConfig.VERSION_NAME, "blongdev");
+        return new UserAgent("Android", "com.blongdev.sift", BuildConfig.VERSION_NAME, "blongdev");
     }
 
     public static Credentials getCredentials() {
