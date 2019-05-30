@@ -208,6 +208,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.blongdev.sift.loggedIn" />
+                <action android:name="com.blongdev.sift.loggedOut" />
             </intent-filter>
         </receiver>
         <receiver android:name=".SiftWidget">

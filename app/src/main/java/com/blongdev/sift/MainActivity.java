@@ -70,6 +70,7 @@ public class MainActivity extends BaseActivity{
         @Override
         public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
             mLoadingSpinner.setVisibility(View.GONE);
+            mSubreddits.clear();
             if (data != null) {
                 data.moveToPosition(-1);
                 while (data.moveToNext()) {
@@ -96,13 +97,7 @@ public class MainActivity extends BaseActivity{
         @Override
         public Loader<List<SubscriptionInfo>> onCreateLoader(int id, Bundle args) {
             mLoadingSpinner.setVisibility(View.VISIBLE);
-            if (Utilities.loggedIn()) {
-                return new PopularSubredditLoader(false);
-            } else {
-                //hide fab from frontpage
-                mFab.hide();
-                return new PopularSubredditLoader(true);
-            }
+            return new PopularSubredditLoader();
         }
 
         @Override
@@ -150,10 +145,6 @@ public class MainActivity extends BaseActivity{
         mLoadingSpinner.setVisibility(View.VISIBLE);
 
         mSubreddits = new ArrayList<SubscriptionInfo>();
-        SubscriptionInfo frontpage = new SubscriptionInfo();
-        frontpage.mSubredditId = -1;
-        frontpage.mSubredditName = getString(R.string.frontPage);
-        mSubreddits.add(frontpage);
 
         mFab = (FloatingActionButton) findViewById(R.id.fab);
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -218,14 +209,23 @@ public class MainActivity extends BaseActivity{
 
     private class SubredditPagerAdapter extends FragmentStatePagerAdapter {
 
-        private List<SubscriptionInfo> mSubreddits;
+        private List<SubscriptionInfo> mSubreddits = new ArrayList<>();
+
+        private void addFrontPage() {
+            SubscriptionInfo frontpage = new SubscriptionInfo();
+            frontpage.mSubredditId = -1;
+            frontpage.mSubredditName = getString(R.string.frontPage);
+            this.mSubreddits.add(frontpage);
+        }
 
         public SubredditPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         public void swapData(List<SubscriptionInfo> subreddits) {
-            this.mSubreddits = subreddits;
+            this.mSubreddits.clear();
+            addFrontPage();
+            this.mSubreddits.addAll(subreddits);
             notifyDataSetChanged();
         }
 
@@ -351,24 +351,15 @@ public class MainActivity extends BaseActivity{
 
 
 class PopularSubredditLoader extends AsyncTaskLoader<List<SubscriptionInfo>> {
-    boolean addFrontPage;
 
-    public PopularSubredditLoader(boolean frontpage) {
+    public PopularSubredditLoader() {
         super(SiftApplication.getContext());
-        addFrontPage = frontpage;
     }
 
     @Override
     public List<SubscriptionInfo> loadInBackground() {
         Reddit reddit = Reddit.getInstance();
         ArrayList<SubscriptionInfo> subredditArray = new ArrayList<SubscriptionInfo>();
-
-        if(addFrontPage) {
-            SubscriptionInfo frontpage = new SubscriptionInfo();
-            frontpage.mSubredditId = -1;
-            frontpage.mSubredditName = SiftApplication.getContext().getString(R.string.frontPage);
-            subredditArray.add(frontpage);
-        }
 
         try {
             SubredditStream paginator = new SubredditStream(reddit.mRedditClient, "popular");

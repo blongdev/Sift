@@ -236,7 +236,7 @@ public class SiftSyncAdapter extends AbstractThreadedSyncAdapter {
                 }
             }
 
-            Intent intent = new Intent(SiftBroadcastReceiver.LOGGED_IN);
+            Intent intent = new Intent(SiftApplication.getContext(), SiftBroadcastReceiver.class).setAction(SiftBroadcastReceiver.LOGGED_IN);
             SiftApplication.getContext().sendBroadcast(intent);
 
             ImportantUserPaginator friends = new ImportantUserPaginator(reddit.mRedditClient, SiftApplication.getContext().getString(R.string.friends));

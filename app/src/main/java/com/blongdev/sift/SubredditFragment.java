@@ -207,6 +207,7 @@ public class SubredditFragment extends Fragment implements LoaderManager.LoaderC
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if (cursor != null) {
             mPosts.clear();
+            cursor.moveToPosition(-1);
             while (cursor.moveToNext()) {
                 PostInfo post = new PostInfo();
                 post.mId = cursor.getLong(cursor.getColumnIndex(SiftContract.Posts._ID));

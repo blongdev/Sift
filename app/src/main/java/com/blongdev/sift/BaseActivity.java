@@ -235,7 +235,7 @@ public class BaseActivity extends AppCompatActivity {
             mRemoveAccount.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this)
+                    new AlertDialog.Builder(BaseActivity.this, android.R.style.Theme_Material_Light_Dialog_Alert)
                     .setMessage(getString(R.string.remove_account))
                     .setPositiveButton(R.string.remove, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -246,9 +246,7 @@ public class BaseActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
 
                         }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+                    }).show();
                 }
             });
         } else {

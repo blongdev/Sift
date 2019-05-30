@@ -342,7 +342,7 @@ public class Reddit {
         protected void onPostExecute(Void nothing) {
             Log.v(LOG_TAG, "onPostExecute()");
 
-            Intent refreshIntent = new Intent(SiftBroadcastReceiver.LOGGED_OUT);
+            Intent refreshIntent = new Intent(SiftApplication.getContext(), SiftBroadcastReceiver.class).setAction(SiftBroadcastReceiver.LOGGED_OUT);
             SiftApplication.getContext().sendBroadcast(refreshIntent);
         }
     }
@@ -1281,7 +1281,10 @@ public class Reddit {
                     if (source != null) {
                         List<String> urls = source.findValuesAsText("url");
                         if (urls != null && urls.size() > 0) {
-                            return urls.get(0);
+                            String url = urls.get(0);
+                            if (url != null) {
+                                return url.replace("&amp;", "&");
+                            }
                         }
                     }
                 }
