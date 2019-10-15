@@ -112,7 +112,7 @@
             android:clipToPadding="false"
             android:background="@color/background"
             tools:context="com.blongdev.sift.PostDetailActivity"
-            android:layout_above="@+id/adView"
+            android:layout_alignParentBottom="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <FrameLayout
@@ -139,17 +139,17 @@
 
         </LinearLayout>
 
-            <com.google.android.gms.ads.AdView
-                android:id="@id/adView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                app:adSize="BANNER"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="@string/advertisement"
-                app:adUnitId="@string/admob_unit_id_post_detail">
-            </com.google.android.gms.ads.AdView>
+            <!--<com.google.android.gms.ads.AdView-->
+                <!--android:id="@id/adView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="bottom|center_horizontal"-->
+                <!--app:adSize="BANNER"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:contentDescription="@string/advertisement"-->
+                <!--app:adUnitId="@string/admob_unit_id_post_detail">-->
+            <!--</com.google.android.gms.ads.AdView>-->
 
         </RelativeLayout>
 
