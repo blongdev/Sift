@@ -106,4 +106,15 @@ public class PostDetailFragment extends Fragment {
         super.onDetach();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mWebView.onResume();
+    }
 }

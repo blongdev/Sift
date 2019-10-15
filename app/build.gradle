@@ -9,9 +9,9 @@ android {
     defaultConfig {
         applicationId "com.blongdev.sift"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 3
-        versionName "0.7.2"
+        targetSdkVersion 29
+        versionCode 4
+        versionName "0.7.3"
     }
 
     packagingOptions {

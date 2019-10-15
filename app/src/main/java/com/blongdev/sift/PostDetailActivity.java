@@ -312,11 +312,11 @@ public class PostDetailActivity extends AppCompatActivity {
 
 
         //admob
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(getString(R.string.device_id))
-                .build();
-        mAdView.loadAd(adRequest);
+//        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(getString(R.string.device_id))
+//                .build();
+//        mAdView.loadAd(adRequest);
     }
 
     private void toggleComments() {
